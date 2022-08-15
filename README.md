@@ -6,7 +6,9 @@
  > inflearn0 - [실전! 코틀린과 스프링 부트로 도서관리 애플리케이션 개발하기](https://www.inflearn.com/course/java-to-kotlin-2/dashboard)   
 
 ***
-
+### 강의 진행중 내용정리 
+ > [강의 내용 정리](https://political-peach-ef5.notion.site/Kotlin-e10f2f51095e4012950e13e6d68e3fdf)
+***
 #### :page_with_curl: 진행 내용  
     1. 기존에 자바로 작성된 코드 를 코틀린으로 테스트 하기 
     2. 자바 코드를 코틀린으로 리펙토링
