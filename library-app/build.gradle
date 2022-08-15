@@ -1,0 +1,61 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.8'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    //코틀린 을 사용하기 위한 플러그인 추가 시작
+    id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+    //기본생성자를 만들어주는 플러그인
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.21'
+    // 스프링에서 편한사용을 도와주는 플러그인
+    // 해당 프로젝트에선 @Bean 들과 해당 빈들의 메서드들을 자동으로 열어(상속과 오버라이딩에 대해)주는 역할을해준다
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21'
+    //QueryDSl 추가 시작
+    id 'org.jetbrains.kotlin.kapt' version '1.6.21'
+    //코틀린 을 사용하기 위한 플러그인 추가 끝
+
+}
+
+group = 'com.group'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //코틀린을 사용하기 위한 dependencies 추가  시작
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    //리플렉션을 위한 의존성 주압
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.21"
+    //json 파싱 문제 해결
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3"
+    //QueryDsl
+    implementation "com.querydsl:querydsl-jpa:5.0.0"
+    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+
+    //코틀린을 사용하기 위한 dependencies 추가  끝
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+//코틀린을 컴파일할 jdk 버젼 설정 시작
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+//테스크 코드 작성시 사용할 jdk
+compileTestKotlin {
+    kotlinOptions{
+        jvmTarget = '11'
+    }
+}
+//코틀린을 컴파일할 jdk 버젼 설정 끝
